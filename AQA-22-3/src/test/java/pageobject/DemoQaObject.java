@@ -1,12 +1,11 @@
-import com.codeborne.selenide.SelenideElement;
+package pageobject;
 
+import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$;
 import static org.openqa.selenium.Keys.CONTROL;
 import static org.openqa.selenium.Keys.DELETE;
 
-class DemoQaObject {
-
-
+public class DemoQaObject {
     SelenideElement firstName = $("[id='firstName']" );
     SelenideElement lastName = $("[id='lastName']" );
     SelenideElement userEmail = $("[id='userEmail']" );

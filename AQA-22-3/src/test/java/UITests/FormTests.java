@@ -1,13 +1,15 @@
+package UITests;
+
 import com.codeborne.selenide.Configuration;
 import jdk.jfr.Description;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import pageobject.DemoQaObject;
 
 import static com.codeborne.selenide.Selenide.closeWindow;
 import static com.codeborne.selenide.Selenide.open;
-
 
 public class FormTests {
     DemoQaObject qaObject = new DemoQaObject();
@@ -33,6 +35,5 @@ public class FormTests {
     void shouldSuccessFillTheFormTest() {
         qaObject.fillform("John", "Doe", "example@domen.com",
                 "9998887766", "28 Oct 2006");
-
     }
 }
