@@ -33,7 +33,10 @@ public class DemoQaRegistrationFormTests {
         $("#userNumber").val("9998887766");
         $("#subjectsInput").val("User Subjects");
         $("#currentAddress").val("USA, Miami");
-        $("#dateOfBirthInput").val("28 Oct 2006");
+        $("#dateOfBirthInput").click();
+        $(".react-datepicker__month-select").selectOption("October");
+        $(".react-datepicker__year-select").selectOption("2006");
+        $(".react-datepicker__day--002:not(.react-datepicker__day--outside-month)").click();
         $("#uploadPicture").uploadFromClasspath("screenshot_22-1.png");;
         $(byText("Male")).click();
         $(byText("Female")).click();
@@ -49,7 +52,7 @@ public class DemoQaRegistrationFormTests {
         $(".table-responsive").shouldHave(text("USA, Miami"));
         $(".table-responsive").shouldHave(text("screenshot_22-1.png"));
 //        $(".table-responsive").shouldHave(text("User subjects"));  падает из-за дефекта формы
-//        $(".table-responsive").shouldHave(text("28 Oct 2006"));    падает из-за некорректного заполнения поля
+        $(".table-responsive").shouldHave(text("02 October,2006"));
     }
 }
 
