@@ -31,9 +31,11 @@ public class DemoQaRegistrationFormTests {
         $("#lastName").val("Doe");
         $("#userEmail").val("example@domen.org");
         $("#userNumber").val("9998887766");
-        $("#subjectsInput").val("User Subjects");
+        $("#subjectsInput").setValue("Economics").pressEnter().val("User Subjects");
         $("#currentAddress").val("USA, Miami");
         $("#dateOfBirthInput").click();
+        $("#dateOfBirthInput").click();
+        $("#dateOfBirthInput").val("02 October 2006");
         $(".react-datepicker__month-select").selectOption("October");
         $(".react-datepicker__year-select").selectOption("2006");
         $(".react-datepicker__day--002:not(.react-datepicker__day--outside-month)").click();
