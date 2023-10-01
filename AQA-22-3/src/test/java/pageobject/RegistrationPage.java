@@ -1,14 +1,16 @@
 package pageobject;
 
 import com.codeborne.selenide.SelenideElement;
+import pageobject.components.CalendarComponent;
 
+import static com.codeborne.selenide.Condition.exactOwnText;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static org.openqa.selenium.remote.tracing.EventAttribute.setValue;
 
 public class RegistrationPage {
-
+    CalendarComponent calendar = new CalendarComponent();
     SelenideElement titleLabel = $(".practice-form-wrapper"),
                     firstName = $("#firstName"),
                     lastName = $("#lastName"),
@@ -23,7 +25,8 @@ public class RegistrationPage {
                     sportsCheckbox = $(byText("Sports")),
                     readingCheckbox = $(byText("Reading")),
                     musicCheckbox = $(byText("Music")),
-                    submitButton = $("#submit");
+                    submitButton = $("#submit"),
+                    successfulRegistrationPage = $("#example-modal-sizes-title-lg");
 
     public RegistrationPage setFirstName(String value) {
         firstName.val(value);
@@ -51,7 +54,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setUserSubject(String value) {
-        userSubject.val(value);
+        userSubject.val(value).pressEnter();
         return this;
     }
 
@@ -106,10 +109,23 @@ public class RegistrationPage {
     }
 
     public RegistrationPage openPage() {
-        open("/automation-practice-form");
+        open("https://demoqa.com/automation-practice-form");
         titleLabel.shouldHave(text("Student Registration Form"));
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
+        return this;
+    }
+
+    public RegistrationPage setCalendarDate(String day, String month, String year) {
+        $("#dateOfBirthInput").click();
+        calendar.setDate(day, month, year);
+        return this;
+    }
+
+    public RegistrationPage checkResult(String key, String value) {
+        successfulRegistrationPage.shouldHave(text("Thanks for submitting the form"));
+        $(".table-responsive").$(byText(key))
+                .shouldHave(text(value));
         return this;
     }
 }
