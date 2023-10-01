@@ -106,11 +106,16 @@ public class RegistrationPage {
         setUserSubject(userSubject);
     }
 
+    public RegistrationPage removeJsCode() {
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
+        return this;
+    }
+
     public RegistrationPage openPage() {
         open("https://demoqa.com/automation-practice-form");
         titleLabel.shouldHave(text("Student Registration Form"));
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
+        removeJsCode();
         return this;
     }
 
