@@ -113,7 +113,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage openPage() {
-        open("https://demoqa.com/automation-practice-form");
+        open("automation-practice-form");
         titleLabel.shouldHave(text("Student Registration Form"));
         removeJsCode();
         return this;

@@ -26,7 +26,7 @@ public class DemoQaRegistrationTestsWithPageObject extends BaseTest {
 
     @BeforeEach
     void openPage(){
-        open("automation-practice-form");
+        registrationPage.openPage();
     }
 
     @Test
