@@ -3,7 +3,6 @@ package pageobject;
 import com.codeborne.selenide.SelenideElement;
 import pageobject.components.CalendarComponent;
 
-import static com.codeborne.selenide.Condition.exactOwnText;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -19,10 +18,10 @@ public class RegistrationPage {
                     userSubject = $("#subjectsInput"),
                     userAddress = $("#currentAddress"),
                     uploadButton = $("#uploadPicture"),
-                    genderMaleRadio = $(byText("Male")),
+                    genderMaleRadio = $("#genterWrapper"),
                     genderFemaleRadio = $(byText("Female")),
                     genderOtherRadio = $(byText("Other")),
-                    sportsCheckbox = $(byText("Sports")),
+                    sportsCheckbox = $("#hobbiesWrapper"),
                     readingCheckbox = $(byText("Reading")),
                     musicCheckbox = $(byText("Music")),
                     submitButton = $("#submit"),
@@ -58,8 +57,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage clickGenderMaleRadio() {
-        genderMaleRadio.click();
+    public RegistrationPage clickGenderRadio(String value) {
+        genderMaleRadio.$(byText(value)).click();
         return this;
     }
 
@@ -73,8 +72,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage clickSportsCheckbox() {
-        sportsCheckbox.click();
+    public RegistrationPage clickHobbiesCheckbox(String value) {
+        sportsCheckbox.$(byText(value)).click();
         return this;
     }
 

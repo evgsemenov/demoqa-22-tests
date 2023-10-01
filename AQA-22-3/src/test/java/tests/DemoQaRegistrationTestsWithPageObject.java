@@ -1,17 +1,27 @@
 package tests;
 
+import com.github.javafaker.Faker;
+import com.github.javafaker.service.RandomService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pageobject.RegistrationPage;
+import utils.GenerateTestData;
+
+import java.util.Locale;
 
 public class DemoQaRegistrationTestsWithPageObject {
     RegistrationPage registrationPage = new RegistrationPage();
-//    String  firstName,
-//            lastName,
-//            userEmail,
-//            userPhone,
-//            userAddress,
-//            userSubjects;
+    GenerateTestData generateTestData = new GenerateTestData();
+    Faker faker = new Faker(new Locale("en-GB"), new RandomService());
+    String firstName = faker.name().firstName();
+    String lastName = faker.name().lastName();
+    String userEmail = faker.internet().emailAddress();
+    String userPhone = faker.numerify("##########");
+    String userAddress = faker.address().streetAddress();
+    String userSubject = generateTestData.getRandomUserSubjects();
+    String gender = generateTestData.getRandomGender();
+    String hobbie = generateTestData.getRandomHobbie();
+    String picture= generateTestData.getRandomPicture();
 
     @BeforeEach
     void openPage(){
@@ -19,21 +29,20 @@ public class DemoQaRegistrationTestsWithPageObject {
     }
 
     @Test
-    void successfulMaleRegistrationTest(){
-        registrationPage.fillRegistrationForm("John", "Doe", "9998887766",
-                "example@gmail.com", "USA, Miami", "Biology");
-        registrationPage.clickGenderMaleRadio();
+    void successfulRegistrationTest(){
+        registrationPage.fillRegistrationForm(firstName,lastName, userPhone, userEmail, userAddress, userSubject);
+        registrationPage.clickGenderRadio(gender);
         registrationPage.setCalendarDate("14", "November", "1998");
-        registrationPage.clickMusicCheckbox();
-        registrationPage.uploadPicture("screenshot_22-1.png");
+        registrationPage.clickHobbiesCheckbox(hobbie);
+        registrationPage.uploadPicture(picture);
         registrationPage.clickSubmitButton();
-        registrationPage.checkResult("Student Name", "John Doe")
-                .checkResult("Student Email", "example@gmail.com")
-                .checkResult("Mobile", "9998887766")
-                .checkResult("Hobbies", "Music")
-                .checkResult("Gender", "Male")
-                .checkResult("Address", "USA, Miami")
+        registrationPage.checkResult("Student Name", firstName + " " + lastName)
+                .checkResult("Student Email", userEmail)
+                .checkResult("Mobile", userPhone)
+                .checkResult("Hobbies", hobbie)
+                .checkResult("Gender", gender)
+                .checkResult("Address", userAddress)
                 .checkResult("Date of Birth", "14 November,1998")
-                .checkResult("Picture", "screenshot_22-1.png");
+                .checkResult("Picture", picture);
     }
 }

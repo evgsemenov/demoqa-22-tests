@@ -1,3 +1,5 @@
+package tests;
+
 import com.codeborne.selenide.Configuration;
 import jdk.jfr.Description;
 import org.junit.jupiter.api.AfterAll;
@@ -31,7 +33,7 @@ public class DemoQaRegistrationFormTests {
         $("#lastName").val("Doe");
         $("#userEmail").val("example@domen.org");
         $("#userNumber").val("9998887766");
-        $("#subjectsInput").setValue("Economics");
+        $("#subjectsInput").val("Computer Science").pressEnter();
         $("#currentAddress").val("USA, Miami");
         $("#dateOfBirthInput").click();
         $("#dateOfBirthInput").click();
@@ -53,7 +55,7 @@ public class DemoQaRegistrationFormTests {
         $(".table-responsive").shouldHave(text("Hobbies Sports, Reading, Music"));
         $(".table-responsive").shouldHave(text("USA, Miami"));
         $(".table-responsive").shouldHave(text("screenshot_22-1.png"));
-//        $(".table-responsive").shouldHave(text("User subjects"));  падает из-за дефекта формы
+        $(".table-responsive").shouldHave(text("Computer Science"));
         $(".table-responsive").shouldHave(text("02 October,2006"));
     }
 }
