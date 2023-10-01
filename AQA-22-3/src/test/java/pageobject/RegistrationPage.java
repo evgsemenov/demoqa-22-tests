@@ -6,7 +6,6 @@ import pageobject.components.CalendarComponent;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static org.openqa.selenium.remote.tracing.EventAttribute.setValue;
 
 public class RegistrationPage {
     CalendarComponent calendar = new CalendarComponent();

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pageobject.RegistrationPage;
 import utils.GenerateTestData;
+import static com.codeborne.selenide.Selenide.*;
 
 import java.util.Locale;
 
@@ -25,7 +26,7 @@ public class DemoQaRegistrationTestsWithPageObject extends BaseTest {
 
     @BeforeEach
     void openPage(){
-        registrationPage.openPage();
+        open("automation-practice-form");
     }
 
     @Test
