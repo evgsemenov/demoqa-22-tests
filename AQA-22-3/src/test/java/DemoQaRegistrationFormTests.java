@@ -31,7 +31,7 @@ public class DemoQaRegistrationFormTests {
         $("#lastName").val("Doe");
         $("#userEmail").val("example@domen.org");
         $("#userNumber").val("9998887766");
-        $("#subjectsInput").setValue("Economics").pressEnter().val("User Subjects");
+        $("#subjectsInput").val("User Subjects").pressEnter();
         $("#currentAddress").val("USA, Miami");
         $("#dateOfBirthInput").click();
         $("#dateOfBirthInput").click();
