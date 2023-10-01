@@ -9,7 +9,7 @@ import utils.GenerateTestData;
 
 import java.util.Locale;
 
-public class DemoQaRegistrationTestsWithPageObject {
+public class DemoQaRegistrationTestsWithPageObject extends BaseTest {
     RegistrationPage registrationPage = new RegistrationPage();
     GenerateTestData generateTestData = new GenerateTestData();
     Faker faker = new Faker(new Locale("en-GB"), new RandomService());
