@@ -124,8 +124,8 @@ public class RegistrationPage {
 
     public RegistrationPage checkResult(String key, String value) {
         successfulRegistrationPage.shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").$(byText(key))
-                .shouldHave(text(value));
+        $(".table-responsive").$(byText(key)).parent()
+                .shouldHave(text(key + " " + value));
         return this;
     }
 }
