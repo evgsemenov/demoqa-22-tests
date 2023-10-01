@@ -20,7 +20,7 @@ public class DemoQaRegistrationTestsWithPageObject extends BaseTest {
     String userAddress = faker.address().streetAddress();
     String userSubject = generateTestData.getRandomUserSubjects();
     String gender = generateTestData.getRandomGender();
-    String hobbie = generateTestData.getRandomHobbie();
+    String hobby = generateTestData.getRandomHobbie();
     String picture= generateTestData.getRandomPicture();
 
     @BeforeEach
@@ -33,13 +33,13 @@ public class DemoQaRegistrationTestsWithPageObject extends BaseTest {
         registrationPage.fillRegistrationForm(firstName,lastName, userPhone, userEmail, userAddress, userSubject);
         registrationPage.clickGenderRadio(gender);
         registrationPage.setCalendarDate("14", "November", "1998");
-        registrationPage.clickHobbiesCheckbox(hobbie);
+        registrationPage.clickHobbiesCheckbox(hobby);
         registrationPage.uploadPicture(picture);
         registrationPage.clickSubmitButton();
         registrationPage.checkResult("Student Name", firstName + " " + lastName)
                 .checkResult("Student Email", userEmail)
                 .checkResult("Mobile", userPhone)
-                .checkResult("Hobbies", hobbie)
+                .checkResult("Hobbies", hobby)
                 .checkResult("Gender", gender)
                 .checkResult("Address", userAddress)
                 .checkResult("Date of Birth", "14 November,1998")
