@@ -1,8 +1,6 @@
 package tests;
 
-import com.codeborne.selenide.commands.Val;
 import com.github.javafaker.Faker;
-import com.github.javafaker.PhoneNumber;
 import com.github.javafaker.service.RandomService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,6 +25,8 @@ public class DemoQaRegistrationTestsWithPageObject extends BaseTest {
     String calendarDay = generateTestData.getRandomCalendarDay();
     String calendarMonth = generateTestData.getRandomMonth();
     String calendarYear = generateTestData.getRandomYear();
+    String userState = generateTestData.getRandomState();
+    String userCity = generateTestData.getRandomCity();
 
     @BeforeEach
     void openPage(){
@@ -40,6 +40,8 @@ public class DemoQaRegistrationTestsWithPageObject extends BaseTest {
         registrationPage.setCalendarDate(calendarDay, calendarMonth,calendarYear);
         registrationPage.clickHobbiesCheckbox(hobby);
         registrationPage.uploadPicture(picture);
+        registrationPage.setUserState("Haryana");
+        registrationPage.setUserCity("Panipat");
         registrationPage.clickSubmitButton();
         registrationPage.checkResult("Student Name", firstName + " " + lastName)
                 .checkResult("Student Email", userEmail)
@@ -48,6 +50,7 @@ public class DemoQaRegistrationTestsWithPageObject extends BaseTest {
                 .checkResult("Gender", gender)
                 .checkResult("Address", userAddress)
                 .checkResult("Date of Birth", calendarDay + " " +  calendarMonth  + "," + calendarYear)
-                .checkResult("Picture", picture);
+                .checkResult("Picture", picture)
+                .checkResult("State and City", "Haryana Panipat");
     }
 }

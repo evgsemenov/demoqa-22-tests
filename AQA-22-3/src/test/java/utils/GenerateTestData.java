@@ -50,4 +50,13 @@ public class GenerateTestData {
         return calendarYear;
     }
 
+    public String getRandomState(){
+        String[] subjects = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
+        return getRandomItemFromArray(subjects);
+    }
+
+    public String getRandomCity(){
+        String[] subjects = {"Agra", "Lucknow", "Merrut"};
+        return getRandomItemFromArray(subjects);
+    }
 }

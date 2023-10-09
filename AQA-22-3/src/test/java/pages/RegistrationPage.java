@@ -17,12 +17,10 @@ public class RegistrationPage {
                     userSubject = $("#subjectsInput"),
                     userAddress = $("#currentAddress"),
                     uploadButton = $("#uploadPicture"),
-                    genderMaleRadio = $("#genterWrapper"),
-                    genderFemaleRadio = $(byText("Female")),
-                    genderOtherRadio = $(byText("Other")),
-                    sportsCheckbox = $("#hobbiesWrapper"),
-                    readingCheckbox = $(byText("Reading")),
-                    musicCheckbox = $(byText("Music")),
+                    genderRadio = $("#genterWrapper"),
+                    hobbiesCheckbox = $("#hobbiesWrapper"),
+                    state = $("#state"),
+                    city = $("#city"),
                     submitButton = $("#submit"),
                     successfulRegistrationPage = $("#example-modal-sizes-title-lg");
 
@@ -57,22 +55,28 @@ public class RegistrationPage {
     }
 
     public RegistrationPage clickGenderRadio(String value) {
-        genderMaleRadio.$(byText(value)).click();
-        return this;
-    }
-
-    public RegistrationPage clickGenderOtherRadio() {
-        genderOtherRadio.click();
+        genderRadio.$(byText(value)).click();
         return this;
     }
 
     public RegistrationPage clickHobbiesCheckbox(String value) {
-        sportsCheckbox.$(byText(value)).click();
+        hobbiesCheckbox.$(byText(value)).click();
         return this;
     }
 
     public RegistrationPage uploadPicture(String value) {
         uploadButton.uploadFromClasspath(value);
+        return this;
+    }
+    public RegistrationPage setUserState(String value) {
+        state.click();
+        state.$(byText(value)).click();
+        return this;
+    }
+
+    public RegistrationPage setUserCity(String value) {
+        city.click();
+        city.$(byText(value)).click();
         return this;
     }
 
@@ -104,9 +108,9 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setCalendarDate(String day, String month, String year) {
+    public RegistrationPage setCalendarDate(String year, String month, String day) {
         $("#dateOfBirthInput").click();
-        calendar.setDate(day, month, year);
+        calendar.setDate(year, month, day);
         return this;
     }
 
