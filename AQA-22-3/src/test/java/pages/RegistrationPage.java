@@ -21,7 +21,9 @@ public class RegistrationPage {
                     hobbiesCheckbox = $("#hobbiesWrapper"),
                     state = $("#state"),
                     city = $("#city"),
+                    calendarElement = $("#dateOfBirthInput"),
                     submitButton = $("#submit"),
+                    tableResponsive = $(".table-responsive"),
                     successfulRegistrationPage = $("#example-modal-sizes-title-lg");
 
     public RegistrationPage setFirstName(String value) {
@@ -109,14 +111,14 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setCalendarDate(String year, String month, String day) {
-        $("#dateOfBirthInput").click();
+        calendarElement.click();
         calendar.setDate(year, month, day);
         return this;
     }
 
     public RegistrationPage checkResult(String key, String value) {
         successfulRegistrationPage.shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").$(byText(key)).parent()
+        tableResponsive.$(byText(key)).parent()
                 .shouldHave(text(key + " " + value));
         return this;
     }
