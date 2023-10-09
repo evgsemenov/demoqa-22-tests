@@ -1,10 +1,12 @@
 package tests;
 
+import com.codeborne.selenide.commands.Val;
 import com.github.javafaker.Faker;
+import com.github.javafaker.PhoneNumber;
 import com.github.javafaker.service.RandomService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import pageobject.RegistrationPage;
+import pages.RegistrationPage;
 import utils.GenerateTestData;
 
 import java.util.Locale;
@@ -22,6 +24,9 @@ public class DemoQaRegistrationTestsWithPageObject extends BaseTest {
     String gender = generateTestData.getRandomGender();
     String hobby = generateTestData.getRandomHobbie();
     String picture= generateTestData.getRandomPicture();
+    String calendarDay = generateTestData.getRandomCalendarDay();
+    String calendarMonth = generateTestData.getRandomMonth();
+    String calendarYear = generateTestData.getRandomYear();
 
     @BeforeEach
     void openPage(){
@@ -32,7 +37,7 @@ public class DemoQaRegistrationTestsWithPageObject extends BaseTest {
     void successfulRegistrationTest(){
         registrationPage.fillRegistrationForm(firstName,lastName, userPhone, userEmail, userAddress, userSubject);
         registrationPage.clickGenderRadio(gender);
-        registrationPage.setCalendarDate("14", "November", "1998");
+        registrationPage.setCalendarDate(calendarDay, calendarMonth,calendarYear);
         registrationPage.clickHobbiesCheckbox(hobby);
         registrationPage.uploadPicture(picture);
         registrationPage.clickSubmitButton();
@@ -42,7 +47,7 @@ public class DemoQaRegistrationTestsWithPageObject extends BaseTest {
                 .checkResult("Hobbies", hobby)
                 .checkResult("Gender", gender)
                 .checkResult("Address", userAddress)
-                .checkResult("Date of Birth", "14 November,1998")
+                .checkResult("Date of Birth", calendarDay + " " +  calendarMonth  + "," + calendarYear)
                 .checkResult("Picture", picture);
     }
 }

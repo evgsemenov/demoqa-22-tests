@@ -1,7 +1,7 @@
-package pageobject;
+package pages;
 
 import com.codeborne.selenide.SelenideElement;
-import pageobject.components.CalendarComponent;
+import pages.components.CalendarComponent;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -61,11 +61,6 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage clickGenderFemaleRadio() {
-        genderFemaleRadio.click();
-        return this;
-    }
-
     public RegistrationPage clickGenderOtherRadio() {
         genderOtherRadio.click();
         return this;
@@ -73,16 +68,6 @@ public class RegistrationPage {
 
     public RegistrationPage clickHobbiesCheckbox(String value) {
         sportsCheckbox.$(byText(value)).click();
-        return this;
-    }
-
-    public RegistrationPage clickReadingCheckbox() {
-        readingCheckbox.click();
-        return this;
-    }
-
-    public RegistrationPage clickMusicCheckbox() {
-        musicCheckbox.click();
         return this;
     }
 

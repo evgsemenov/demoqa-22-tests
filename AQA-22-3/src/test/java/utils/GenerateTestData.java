@@ -27,9 +27,27 @@ public class GenerateTestData {
         return getRandomItemFromArray(pictures);
     }
 
-
     public String getRandomUserSubjects(){
        String[] subjects = {"Computer Science", "Biology", "Social Studies", "Maths", "Arts"};
         return getRandomItemFromArray(subjects);
     }
+
+    public String getRandomCalendarDay(){
+        Integer value = getRandomInt(1, 28);
+        String calendarDay=value.toString();
+        return calendarDay;
+    }
+
+    public String getRandomMonth(){
+        String[] subjects = {"January", "February", "March", "April", "May", "June", "July", "August", "September",
+                            "October", "November", "December"};
+        return getRandomItemFromArray(subjects);
+    }
+
+    public String getRandomYear(){
+        Integer value = getRandomInt(1900, 2100);
+        String calendarYear=value.toString();
+        return calendarYear;
+    }
+
 }
