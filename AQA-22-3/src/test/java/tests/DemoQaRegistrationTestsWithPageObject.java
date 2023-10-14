@@ -5,6 +5,7 @@ import com.github.javafaker.service.RandomService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
+import pages.components.CheckResultComponent;
 import utils.GenerateTestData;
 
 import java.util.Locale;
@@ -12,6 +13,7 @@ import java.util.Locale;
 public class DemoQaRegistrationTestsWithPageObject extends BaseTest {
     RegistrationPage registrationPage = new RegistrationPage();
     GenerateTestData generateTestData = new GenerateTestData();
+    CheckResultComponent checkResultComponent = new CheckResultComponent();
     Faker faker = new Faker(new Locale("en-GB"), new RandomService());
     String firstName = faker.name().firstName();
     String lastName = faker.name().lastName();
@@ -43,7 +45,7 @@ public class DemoQaRegistrationTestsWithPageObject extends BaseTest {
         registrationPage.setUserState("Haryana");
         registrationPage.setUserCity("Panipat");
         registrationPage.clickSubmitButton();
-        registrationPage.checkResult("Student Name", firstName + " " + lastName)
+        checkResultComponent.checkResult("Student Name", firstName + " " + lastName)
                 .checkResult("Student Email", userEmail)
                 .checkResult("Mobile", userPhone)
                 .checkResult("Hobbies", hobby)

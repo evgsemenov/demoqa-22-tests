@@ -22,9 +22,7 @@ public class RegistrationPage {
                     state = $("#state"),
                     city = $("#city"),
                     calendarElement = $("#dateOfBirthInput"),
-                    submitButton = $("#submit"),
-                    tableResponsive = $(".table-responsive"),
-                    successfulRegistrationPage = $("#example-modal-sizes-title-lg");
+                    submitButton = $("#submit");
 
     public RegistrationPage setFirstName(String value) {
         firstName.val(value);
@@ -113,13 +111,6 @@ public class RegistrationPage {
     public RegistrationPage setCalendarDate(String year, String month, String day) {
         calendarElement.click();
         calendar.setDate(year, month, day);
-        return this;
-    }
-
-    public RegistrationPage checkResult(String key, String value) {
-        successfulRegistrationPage.shouldHave(text("Thanks for submitting the form"));
-        tableResponsive.$(byText(key)).parent()
-                .shouldHave(text(key + " " + value));
         return this;
     }
 }
