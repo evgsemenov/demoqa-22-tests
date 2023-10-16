@@ -1,6 +1,5 @@
 package tests;
 
-import com.codeborne.selenide.logevents.SelenideLogger;
 import com.github.javafaker.Faker;
 import com.github.javafaker.service.RandomService;
 import org.junit.jupiter.api.Test;
@@ -30,11 +29,6 @@ public class DemoQaRegistrationTestsWithPageObject extends BaseTest {
     String calendarYear = generateTestData.getRandomYear();
     String userState = generateTestData.getRandomState();
     String userCity = generateTestData.getRandomCity();
-
-//    @BeforeEach
-////    void openPage(){
-////        registrationPage.openPage();
-////    }
 
     @Test
     void successfulRegistrationTest(){
