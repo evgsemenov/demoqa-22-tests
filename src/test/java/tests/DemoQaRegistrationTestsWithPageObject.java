@@ -1,8 +1,8 @@
 package tests;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
 import com.github.javafaker.Faker;
 import com.github.javafaker.service.RandomService;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import pages.components.CheckResultComponent;
@@ -15,6 +15,7 @@ public class DemoQaRegistrationTestsWithPageObject extends BaseTest {
     GenerateTestData generateTestData = new GenerateTestData();
     CheckResultComponent checkResultComponent = new CheckResultComponent();
     Faker faker = new Faker(new Locale("en-GB"), new RandomService());
+
     String firstName = faker.name().firstName();
     String lastName = faker.name().lastName();
     String userEmail = faker.internet().emailAddress();
@@ -30,10 +31,10 @@ public class DemoQaRegistrationTestsWithPageObject extends BaseTest {
     String userState = generateTestData.getRandomState();
     String userCity = generateTestData.getRandomCity();
 
-    @BeforeEach
-    void openPage(){
-        registrationPage.openPage();
-    }
+//    @BeforeEach
+////    void openPage(){
+////        registrationPage.openPage();
+////    }
 
     @Test
     void successfulRegistrationTest(){
