@@ -33,7 +33,6 @@ public class BaseTest {
 
     @BeforeAll
     static void beforeAll() {
-        open("https://demoqa.com/automation-practice-form");
         DesiredCapabilities capabilities = new DesiredCapabilities();
         Configuration.browserCapabilities = capabilities;
         Configuration.pageLoadStrategy = "eager";
@@ -44,6 +43,7 @@ public class BaseTest {
                 "enableVNC", true,
                 "enableVideo", true
         ));
+
 
 //        Configuration.baseUrl = "https://demoqa.com/";
 

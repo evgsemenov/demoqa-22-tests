@@ -9,6 +9,8 @@ import utils.GenerateTestData;
 
 import java.util.Locale;
 
+import static com.codeborne.selenide.Selenide.open;
+
 public class DemoQaRegistrationTestsWithPageObject extends BaseTest {
     RegistrationPage registrationPage = new RegistrationPage();
     GenerateTestData generateTestData = new GenerateTestData();
@@ -32,6 +34,7 @@ public class DemoQaRegistrationTestsWithPageObject extends BaseTest {
 
     @Test
     void successfulRegistrationTest(){
+        open("https://demoqa.com/automation-practice-form");
         registrationPage.fillRegistrationForm(firstName,lastName, userPhone, userEmail, userAddress, userSubject);
         registrationPage.clickGenderRadio(gender);
         registrationPage.setCalendarDate(calendarDay, calendarMonth,calendarYear);
